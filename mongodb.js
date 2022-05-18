@@ -1,8 +1,11 @@
 const { MongoClient } = require('mongodb');
 // or as an es module:
 // import { MongoClient } from 'mongodb'
+const dotenv = require('dotenv').config()
 
-const uri = MONGO_URL;
+//console.log(dotenv)
+
+const uri = process.env.MONGO_URL;
 const client = new MongoClient(uri);
 
 async function run() {
