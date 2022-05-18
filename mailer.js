@@ -8,8 +8,8 @@ async function main() {
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "w0192ea8.kasserver.com",
-    port: 587,
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
     secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.MAIL_USER,
@@ -19,8 +19,8 @@ async function main() {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Chris Rawk👻" <node@webdemos.at>',
-    to: "ce@rawk.at, service@rawk.at", 
+    from: process.env.MAIL_FROM,
+    to: process.env.MAIL_TO, 
     subject: "Hello ✔",
     text: "Hello world?", 
     html: "<b>Hello world?</b>", 
